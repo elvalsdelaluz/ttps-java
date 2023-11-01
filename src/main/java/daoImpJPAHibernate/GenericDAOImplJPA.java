@@ -71,23 +71,7 @@ public class GenericDAOImplJPA <T> implements GenericDAO <T> {
 //			}
 //	}
 	
-//	@Override
-//	public void borrar(T entity) {
-//	 EntityManager em = EMF.getEMF().createEntityManager();
-//	 EntityTransaction tx = null;
-//	 try {
-//	 tx = em.getTransaction();
-//	 tx.begin();
-//	 em.remove(entity); //em.remove(entity);
-//	 tx.commit();
-//	 }
-//	 catch (RuntimeException e) {
-//	 if ( tx != null && tx.isActive() ) tx.rollback();
-//	 throw e;
-//	 } finally {
-//	 em.close();
-//	 }
-//	}
+
 	
 	@Override
 	public void borrar(T entity) {
@@ -117,53 +101,6 @@ public class GenericDAOImplJPA <T> implements GenericDAO <T> {
 	}
 
 	
-//	@Override
-//	public T borrar(Long id) {
-//	    EntityManager em = EMF.getEMF().createEntityManager();
-//	    T entity = this.recuperar(id);
-//	    if (entity != null) {
-//	        em.remove(entity);
-//	    }
-//	    em.close();
-//	    return entity;
-//	}
-	
-
-//	@Override
-//	public T borrar(Long id) {
-//	    EntityManager em = EMF.getEMF().createEntityManager();
-//	    T entity = (T) em.find(this.getPersistentClass(), id);
-//	    if (entity != null) {
-//	        em.remove(entity);
-//	    }
-//	    em.close();
-//	    return entity;
-//	}
-	
-//	@Override
-//	public T borrar(Long id) {
-//	    EntityManager em = EMF.getEMF().createEntityManager();
-//	    EntityTransaction tx = em.getTransaction();
-//	    T entity = null;
-//
-//	    try {
-//	        tx.begin();
-//	        entity = (T) em.find(this.getPersistentClass(), id);
-//	        //entity = this.recuperar(id);
-//	        if (entity != null) {
-//	            this.borrar(entity); //em.remove(entity);
-//	        }
-//	        tx.commit();
-//	    } catch (Exception e) {
-//	        if (tx.isActive()) {
-//	            tx.rollback();
-//	        }
-//	    } finally {
-//	        em.close();
-//	    }
-//	    return entity;
-//	}
-	
 	@Override
 	public T borrar(Long id) {
   	EntityManager em = EMF.getEMF().createEntityManager();
@@ -177,13 +114,6 @@ public class GenericDAOImplJPA <T> implements GenericDAO <T> {
 	
 
 
-//
-//	public List<T> recuperarTodos(String columnOrder) {
-//		Query consulta = EMF.getEMF().createEntityManager().createQuery("select e from " + getPersistentClass().getSimpleName() + " e");
-//	    List<T> resultado = (List<T>)consulta.getResultList();
-//	    return resultado;
-//	}
-	
 	public List<T> recuperarTodos(String columnOrder) {
 		List<T> resultado = null;
 		try {
