@@ -28,11 +28,14 @@ public class Gasto {
 	private Date fecha_creacion;
 	@Lob
 	private String imagen;
-	@OneToOne
+	
+	@ManyToOne //UNIDIRECCIONAL
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+	
 	private String forma_division;
-	@OneToOne
+	
+	@ManyToOne //UNIDIRECCIONAL
 	@JoinColumn(name = "id_categoria_gasto")
 	private CategoriaGasto categoria;
 	
@@ -40,7 +43,7 @@ public class Gasto {
 	@JoinColumn(name="id_grupo")
 	private Grupo grupo;
 	
-	 @OneToMany(mappedBy="gasto")
+	@OneToMany(mappedBy="gasto")
 	private List<Pago> pagos;
 	 
 	//CONSTRUCTOR

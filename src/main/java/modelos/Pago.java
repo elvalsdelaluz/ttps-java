@@ -17,12 +17,15 @@ public class Pago {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id_pago;
 	private double monto;
+	
 	@ManyToOne
 	@JoinColumn(name="id_gasto")
 	private Gasto gasto;
-	@OneToOne
+	
+	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+	
 	@Temporal(TemporalType.DATE)
 	private Date fecha_creacion;
 	

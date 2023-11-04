@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -26,16 +27,16 @@ public class Grupo {
     @JoinTable(
         name = "grupo_usuario",
         joinColumns = @JoinColumn(name = "id_grupo"),
-        inverseJoinColumns = @JoinColumn(name = "id_usuario")
-    )
+        inverseJoinColumns = @JoinColumn(name = "id_usuario"))
     private List<Usuario> miembros;
     
     @OneToMany(mappedBy="grupo")
 	private List<Gasto> gastos;
     
-    @OneToOne
+    @ManyToOne //UNIDIRECCIONAL
 	@JoinColumn(name = "id_categoria_grupo")
 	private CategoriaGrupo categoria;
+    
 	@Temporal(TemporalType.DATE)
 	private Date fecha_creacion;
 	
