@@ -10,21 +10,24 @@ import jakarta.websocket.Decoder.Text;
 
 @Entity 
 public class CategoriaGrupo {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id_categoria_grupo;
 	private String nombre;
 	@Lob
 	private String imagen;
 	
 	//CONSTRUCTOR
-	public CategoriaGrupo(String nombre) {
-		super();
-		this.nombre = nombre;
-	}
-	
 	public CategoriaGrupo() {}
 
 	
+	public CategoriaGrupo(Long id_categoria_grupo, String nombre, String imagen) {
+		super();
+		this.id_categoria_grupo = id_categoria_grupo;
+		this.nombre = nombre;
+		this.imagen = imagen;
+	}
+
+
 	//GETTER AND SETTER
 		public String getNombre() {
 			return nombre;

@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Grupo {
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id_grupo;
     private String nombre;
     @ManyToMany
@@ -41,16 +41,20 @@ public class Grupo {
 	private Date fecha_creacion;
 	
 	//CONSTRUCTOR
-	public Grupo(String nombre, CategoriaGrupo categoria) {
-		super();
-		this.nombre = nombre;
-		this.miembros = new ArrayList<Usuario>();
-		this.gastos = new ArrayList<Gasto>();
-		this.categoria = categoria;
-		this.fecha_creacion = new java.util.Date();
-	}
+	
 	public Grupo() {}
 	
+	public Grupo(Long id_grupo, String nombre, List<Usuario> miembros, List<Gasto> gastos, CategoriaGrupo categoria,
+			Date fecha_creacion) {
+		super();
+		this.id_grupo = id_grupo;
+		this.nombre = nombre;
+		this.miembros = miembros;
+		this.gastos = gastos;
+		this.categoria = categoria;
+		this.fecha_creacion = fecha_creacion;
+	}
+
 	//GETTER AND SETTER
 	public Long getId_grupo() {
 		return id_grupo;

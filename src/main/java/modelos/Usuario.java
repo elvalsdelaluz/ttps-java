@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Usuario {
-	 @Id @GeneratedValue(strategy=GenerationType.AUTO)
+	 @Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	 private Long id_usuario;
 	 private String usuario;
 	 private String apellido;
@@ -34,18 +34,22 @@ public class Usuario {
 	 private List<Grupo> grupos; 
 	 
 	 //CONSTRUCTORES
-	 public Usuario(String usuario, String apellido, String nombre, String email, String contraseña) {
-			super();
-			this.usuario = usuario;
-			this.apellido = apellido;
-			this.nombre = nombre;
-			this.email = email;
-			this.contraseña = contraseña;
-			this.fecha_creacion = new java.util.Date();
-			this.grupos = new ArrayList<Grupo>();
-		}
+	
 	 public Usuario () {}
 	 
+	 public Usuario(Long id_usuario, String usuario, String apellido, String nombre, String email, String contraseña,
+			Date fecha_creacion, List<Grupo> grupos) {
+		super();
+		this.id_usuario = id_usuario;
+		this.usuario = usuario;
+		this.apellido = apellido;
+		this.nombre = nombre;
+		this.email = email;
+		this.contraseña = contraseña;
+		this.fecha_creacion = fecha_creacion;
+		this.grupos = grupos;
+	 }
+
 	//GETTER AND SETTER
 	public String getUsuario() {
 		return usuario;

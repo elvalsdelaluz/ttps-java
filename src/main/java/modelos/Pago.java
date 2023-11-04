@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Pago {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id_pago;
 	private double monto;
 	
@@ -30,16 +30,20 @@ public class Pago {
 	private Date fecha_creacion;
 	
 	//CONSTRUCTOR
-	public Pago(double monto, Gasto gasto, Usuario usuario) {
-		super();
-		this.monto = monto;
-		this.gasto = gasto;
-		this.usuario = usuario;
-		this.fecha_creacion = new java.util.Date();
-	}
+	
 	public Pago() {}
 	
 	 
+	public Pago(Long id_pago, double monto, Gasto gasto, Usuario usuario, Date fecha_creacion) {
+		super();
+		this.id_pago = id_pago;
+		this.monto = monto;
+		this.gasto = gasto;
+		this.usuario = usuario;
+		this.fecha_creacion = fecha_creacion;
+	}
+
+
 	//GETTER AND SETTER
 	public Long getId() {
 		return id_pago;

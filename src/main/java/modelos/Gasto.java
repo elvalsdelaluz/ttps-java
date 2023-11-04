@@ -21,7 +21,7 @@ import jakarta.websocket.Encoder.Text;
 
 @Entity
 public class Gasto {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id_gasto;
 	private double monto;
 	@Temporal(TemporalType.DATE)
@@ -47,19 +47,25 @@ public class Gasto {
 	private List<Pago> pagos;
 	 
 	//CONSTRUCTOR
-		public Gasto(double monto, Usuario deudor, String forma_division, Grupo grupo) {
-			super();
-			this.monto = monto;
-			this.fecha_creacion = new java.util.Date();
-			this.usuario = deudor;
-			this.forma_division = forma_division;
-			//this.categoria = categoria;
-			this.grupo = grupo;
-			this.pagos = new ArrayList<Pago>();
-		}
-		public Gasto() {}
+	
+	public Gasto() {}
 	
 	
+	public Gasto(Long id_gasto, double monto, Date fecha_creacion, String imagen, Usuario usuario,
+			String forma_division, CategoriaGasto categoria, Grupo grupo, List<Pago> pagos) {
+		super();
+		this.id_gasto = id_gasto;
+		this.monto = monto;
+		this.fecha_creacion = fecha_creacion;
+		this.imagen = imagen;
+		this.usuario = usuario;
+		this.forma_division = forma_division;
+		this.categoria = categoria;
+		this.grupo = grupo;
+		this.pagos = pagos;
+	}
+
+
 	//GETTER AND SETTER
 	public Long getId_gasto() {
 	    return id_gasto;
