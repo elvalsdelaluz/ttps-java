@@ -51,12 +51,12 @@ public class Gasto {
 	public Gasto() {}
 	
 	
-	public Gasto(Long id_gasto, double monto, Date fecha_creacion, String imagen, Usuario usuario,
+	public Gasto(Long id_gasto, double monto, String imagen, Usuario usuario,
 			String forma_division, CategoriaGasto categoria, Grupo grupo, List<Pago> pagos) {
 		super();
 		this.id_gasto = id_gasto;
 		this.monto = monto;
-		this.fecha_creacion = fecha_creacion;
+		this.fecha_creacion = new java.util.Date();
 		this.imagen = imagen;
 		this.usuario = usuario;
 		this.forma_division = forma_division;
@@ -114,17 +114,31 @@ public class Gasto {
 	public void setUsuario(Usuario deudor) {
 		this.usuario = deudor;
 	}
-//	public FormaDivision getFormaDivision() {
-//		return formaDivision;
-//	}
-//	public void setFormaDivision(FormaDivision formaDivision) {
-//		this.formaDivision = formaDivision;
-//	}
 	public CategoriaGasto getCategoria() {
 		return categoria;
 	}
 	public void setCategoria(CategoriaGasto categoria) {
 		this.categoria = categoria;
+	}
+
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+
+	public String getForma_division() {
+		return forma_division;
+	}
+
+
+	public void setForma_division(String forma_division) {
+		this.forma_division = forma_division;
 	}
 	
 	

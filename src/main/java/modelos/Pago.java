@@ -34,13 +34,13 @@ public class Pago {
 	public Pago() {}
 	
 	 
-	public Pago(Long id_pago, double monto, Gasto gasto, Usuario usuario, Date fecha_creacion) {
+	public Pago(Long id_pago, double monto, Gasto gasto, Usuario usuario) {
 		super();
 		this.id_pago = id_pago;
 		this.monto = monto;
 		this.gasto = gasto;
 		this.usuario = usuario;
-		this.fecha_creacion = fecha_creacion;
+		this.fecha_creacion = new java.util.Date();;
 	}
 
 
@@ -64,7 +64,37 @@ public class Pago {
 	public void setUsuario(Usuario deudor) {
 		this.usuario = deudor;
 	}
+
+
+	public Long getId_pago() {
+		return id_pago;
+	}
+
+
+	public void setId_pago(Long id_pago) {
+		this.id_pago = id_pago;
+	}
+
+
+	public Gasto getGasto() {
+		return gasto;
+	}
+
+
+	public void setGasto(Gasto gasto) {
+		this.gasto = gasto;
+	}
+
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
 	 
-	 
+	
 
 }

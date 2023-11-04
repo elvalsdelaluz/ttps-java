@@ -39,6 +39,14 @@ public class CategoriaGasto {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+
+	public Long getId_categoria_gasto() {
+		return id_categoria_gasto;
+	}
+
+	public void setId_categoria_gasto(Long id_categoria_gasto) {
+		this.id_categoria_gasto = id_categoria_gasto;
 	} 
 	
 	

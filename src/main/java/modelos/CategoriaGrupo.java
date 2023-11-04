@@ -41,6 +41,16 @@ public class CategoriaGrupo {
 		}
 		public void setImagen(String imagen) {
 			this.imagen = imagen;
+		}
+
+
+		public Long getId_categoria_grupo() {
+			return id_categoria_grupo;
+		}
+
+
+		public void setId_categoria_grupo(Long id_categoria_grupo) {
+			this.id_categoria_grupo = id_categoria_grupo;
 		} 
 	
 	

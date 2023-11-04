@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -23,9 +24,12 @@ public class Usuario {
 	 private String nombre;
 	 private String email;
 	 private String contraseña;
-//	 @OneToMany
-//	 @JoinColumn(name="usuario_id")
-//	 private List<Usuario> contactos;
+	 @ManyToMany
+	 @JoinTable(
+	        name = "contactos",
+	        joinColumns = @JoinColumn(name = "usuario_id"),
+	        inverseJoinColumns = @JoinColumn(name = "contacto_id"))
+	 private List<Usuario> contactos;
 	 
 	 @Temporal(TemporalType.DATE)
 	 private Date fecha_creacion;
@@ -37,8 +41,7 @@ public class Usuario {
 	
 	 public Usuario () {}
 	 
-	 public Usuario(Long id_usuario, String usuario, String apellido, String nombre, String email, String contraseña,
-			Date fecha_creacion, List<Grupo> grupos) {
+	 public Usuario(Long id_usuario, String usuario, String apellido, String nombre, String email, String contraseña) {
 		super();
 		this.id_usuario = id_usuario;
 		this.usuario = usuario;
@@ -46,8 +49,9 @@ public class Usuario {
 		this.nombre = nombre;
 		this.email = email;
 		this.contraseña = contraseña;
-		this.fecha_creacion = fecha_creacion;
-		this.grupos = grupos;
+		this.fecha_creacion = new java.util.Date();
+		this.grupos = new ArrayList<Grupo> ();
+		this.contactos = new ArrayList<Usuario>();
 	 }
 
 	//GETTER AND SETTER
@@ -82,12 +86,39 @@ public class Usuario {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-//	public List<Usuario> getContactos() {
-//		return contactos;
-//	}
-//	public void setContactos(List<Usuario> contactos) {
-//		this.contactos = contactos;
-//	}
+
+	public Long getId_usuario() {
+		return id_usuario;
+	}
+
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+
+	public List<Usuario> getContactos() {
+		return contactos;
+	}
+
+	public void setContactos(List<Usuario> contactos) {
+		this.contactos = contactos;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+    
 	
 	 
 

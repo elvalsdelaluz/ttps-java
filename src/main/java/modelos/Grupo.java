@@ -44,15 +44,14 @@ public class Grupo {
 	
 	public Grupo() {}
 	
-	public Grupo(Long id_grupo, String nombre, List<Usuario> miembros, List<Gasto> gastos, CategoriaGrupo categoria,
-			Date fecha_creacion) {
+	public Grupo(Long id_grupo, String nombre, List<Usuario> miembros, List<Gasto> gastos, CategoriaGrupo categoria) {
 		super();
 		this.id_grupo = id_grupo;
 		this.nombre = nombre;
 		this.miembros = miembros;
 		this.gastos = gastos;
 		this.categoria = categoria;
-		this.fecha_creacion = fecha_creacion;
+		this.fecha_creacion = new java.util.Date();;
 	}
 
 	//GETTER AND SETTER
@@ -88,6 +87,14 @@ public class Grupo {
 	}
 	public void setCategoria(CategoriaGrupo categoria) {
 		this.categoria = categoria;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
 	}
 	
 	
