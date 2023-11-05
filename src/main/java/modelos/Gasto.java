@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,12 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.crypto.Data;
-
-import jakarta.websocket.Encoder.Text;
 
 @Entity
 public class Gasto {
@@ -29,42 +26,39 @@ public class Gasto {
 	@Lob
 	private String imagen;
 	
-	@ManyToOne //UNIDIRECCIONAL
+	@ManyToOne (cascade= {CascadeType.ALL}) //UNIDIRECCIONAL
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
 	private String forma_division;
 	
-	@ManyToOne //UNIDIRECCIONAL
+	@ManyToOne (cascade= {CascadeType.ALL}) //UNIDIRECCIONAL
 	@JoinColumn(name = "id_categoria_gasto")
 	private CategoriaGasto categoria;
 	
-	@ManyToOne
+	@ManyToOne (cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_grupo")
 	private Grupo grupo;
 	
-	@OneToMany(mappedBy="gasto")
+	@OneToMany(mappedBy="gasto", cascade= {CascadeType.ALL})
 	private List<Pago> pagos;
 	 
 	//CONSTRUCTOR
 	
-	public Gasto() {}
 	
-	
-	public Gasto(Long id_gasto, double monto, String imagen, Usuario usuario,
-			String forma_division, CategoriaGasto categoria, Grupo grupo, List<Pago> pagos) {
+	public Gasto(double monto, Usuario usuario,
+			String forma_division, CategoriaGasto categoria, Grupo grupo) {
 		super();
-		this.id_gasto = id_gasto;
 		this.monto = monto;
 		this.fecha_creacion = new java.util.Date();
-		this.imagen = imagen;
 		this.usuario = usuario;
 		this.forma_division = forma_division;
 		this.categoria = categoria;
 		this.grupo = grupo;
-		this.pagos = pagos;
 	}
-
+	public Gasto() {}
+	
+	
 
 	//GETTER AND SETTER
 	public Long getId_gasto() {

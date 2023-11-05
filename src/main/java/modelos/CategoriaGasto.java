@@ -17,15 +17,14 @@ public class CategoriaGasto {
 	private String imagen;
 
 	//CONSTRUCTOR
+	
+	
+	public CategoriaGasto(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
 	public CategoriaGasto() {}
 	
-	public CategoriaGasto(Long id_categoria_gasto, String nombre, String imagen) {
-		super();
-		this.id_categoria_gasto = id_categoria_gasto;
-		this.nombre = nombre;
-		this.imagen = imagen;
-	}
-
 	//GETTER AND SETTER
 	public String getNombre() {
 		return nombre;

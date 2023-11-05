@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,11 @@ import javax.persistence.TemporalType;
 public class Usuario {
 	 @Id @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	 private Long id_usuario;
-	 private String usuario;
 	 private String apellido;
 	 private String nombre;
 	 private String email;
 	 private String contraseña;
-	 @ManyToMany
+	 @ManyToMany  (cascade= {CascadeType.ALL})
 	 @JoinTable(
 	        name = "contactos",
 	        joinColumns = @JoinColumn(name = "usuario_id"),
@@ -34,34 +34,27 @@ public class Usuario {
 	 @Temporal(TemporalType.DATE)
 	 private Date fecha_creacion;
 	 
-	 @ManyToMany(mappedBy="miembros")
+	 @ManyToMany(mappedBy="miembros", cascade= {CascadeType.ALL})
 	 private List<Grupo> grupos; 
 	 
 	 //CONSTRUCTORES
 	
-	 public Usuario () {}
-	 
-	 public Usuario(Long id_usuario, String usuario, String apellido, String nombre, String email, String contraseña) {
+	
+	 public Usuario(String apellido, String nombre, String email, String contraseña) {
 		super();
-		this.id_usuario = id_usuario;
-		this.usuario = usuario;
 		this.apellido = apellido;
 		this.nombre = nombre;
 		this.email = email;
 		this.contraseña = contraseña;
 		this.fecha_creacion = new java.util.Date();
-		this.grupos = new ArrayList<Grupo> ();
-		this.contactos = new ArrayList<Usuario>();
+		//this.grupos = new ArrayList<Grupo> ();
+		//this.contactos = new ArrayList<Usuario>();
 	 }
+	 
+	 public Usuario () {}
+	 
 
 	//GETTER AND SETTER
-	public String getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
 	public String getApellido() {
 		return apellido;
 	}

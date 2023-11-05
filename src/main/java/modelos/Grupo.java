@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,17 +24,17 @@ public class Grupo {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id_grupo;
     private String nombre;
-    @ManyToMany
+    @ManyToMany (cascade= {CascadeType.ALL})
     @JoinTable(
         name = "grupo_usuario",
         joinColumns = @JoinColumn(name = "id_grupo"),
         inverseJoinColumns = @JoinColumn(name = "id_usuario"))
     private List<Usuario> miembros;
     
-    @OneToMany(mappedBy="grupo")
+    @OneToMany(mappedBy="grupo",cascade= {CascadeType.ALL})
 	private List<Gasto> gastos;
     
-    @ManyToOne //UNIDIRECCIONAL
+    @ManyToOne (cascade= {CascadeType.ALL})//UNIDIRECCIONAL
 	@JoinColumn(name = "id_categoria_grupo")
 	private CategoriaGrupo categoria;
     
@@ -42,17 +43,18 @@ public class Grupo {
 	
 	//CONSTRUCTOR
 	
-	public Grupo() {}
 	
-	public Grupo(Long id_grupo, String nombre, List<Usuario> miembros, List<Gasto> gastos, CategoriaGrupo categoria) {
+	public Grupo(String nombre, List<Usuario> miembros, List<Gasto> gastos, CategoriaGrupo categoria) {
 		super();
-		this.id_grupo = id_grupo;
 		this.nombre = nombre;
 		this.miembros = miembros;
 		this.gastos = gastos;
 		this.categoria = categoria;
 		this.fecha_creacion = new java.util.Date();;
 	}
+	
+	public Grupo() {}
+	
 
 	//GETTER AND SETTER
 	public Long getId_grupo() {

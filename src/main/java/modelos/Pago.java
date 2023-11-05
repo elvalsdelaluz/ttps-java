@@ -2,6 +2,7 @@ package modelos;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +19,11 @@ public class Pago {
 	private Long id_pago;
 	private double monto;
 	
-	@ManyToOne
+	@ManyToOne (cascade= {CascadeType.ALL})
 	@JoinColumn(name="id_gasto")
 	private Gasto gasto;
 	
-	@ManyToOne
+	@ManyToOne (cascade= {CascadeType.ALL})
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
@@ -31,18 +32,17 @@ public class Pago {
 	
 	//CONSTRUCTOR
 	
-	public Pago() {}
 	
-	 
-	public Pago(Long id_pago, double monto, Gasto gasto, Usuario usuario) {
+	public Pago(double monto, Gasto gasto, Usuario usuario) {
 		super();
-		this.id_pago = id_pago;
 		this.monto = monto;
 		this.gasto = gasto;
 		this.usuario = usuario;
 		this.fecha_creacion = new java.util.Date();;
 	}
-
+	public Pago() {}
+	
+	 
 
 	//GETTER AND SETTER
 	public Long getId() {

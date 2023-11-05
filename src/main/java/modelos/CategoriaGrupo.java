@@ -17,16 +17,12 @@ public class CategoriaGrupo {
 	private String imagen;
 	
 	//CONSTRUCTOR
-	public CategoriaGrupo() {}
-
 	
-	public CategoriaGrupo(Long id_categoria_grupo, String nombre, String imagen) {
+	public CategoriaGrupo(String nombre) {
 		super();
-		this.id_categoria_grupo = id_categoria_grupo;
 		this.nombre = nombre;
-		this.imagen = imagen;
 	}
-
+	public CategoriaGrupo() {}
 
 	//GETTER AND SETTER
 		public String getNombre() {
