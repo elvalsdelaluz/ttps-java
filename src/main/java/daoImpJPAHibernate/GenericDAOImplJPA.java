@@ -135,30 +135,30 @@ public class GenericDAOImplJPA <T> implements GenericDAO <T> {
 	}
 	
 	
-	@Override
-	public T recuperar(Serializable id) {
-	    EntityManager em = EMF.getEMF().createEntityManager();
-
-	    // Utiliza la consulta JPQL para recuperar la entidad por su ID
-	    String jpql = "SELECT e FROM " + getPersistentClass().getSimpleName() + " e WHERE e.id = :id";
-
-	    // Crea la consulta y establece el parámetro ":id"
-	    Query query = em.createQuery(jpql);
-	    query.setParameter("id", id);
-
-	    // Ejecuta la consulta y obtén el resultado como un objeto de la entidad
-	    T e = (T) query.getSingleResult();
-
-	    em.close();
-
-	    return e;
-	}
-	
-	//Otra manera de encararlo
 //	@Override
 //	public T recuperar(Serializable id) {
-//		return (T) EMF.getEMF().createEntityManager().find(getPersistentClass(), id);
+//	    EntityManager em = EMF.getEMF().createEntityManager();
+//
+//	    // Utiliza la consulta JPQL para recuperar la entidad por su ID
+//	    String jpql = "SELECT e FROM " + getPersistentClass().getSimpleName() + " e WHERE e.id = :id";
+//
+//	    // Crea la consulta y establece el parámetro ":id"
+//	    Query query = em.createQuery(jpql);
+//	    query.setParameter("id", id);
+//
+//	    // Ejecuta la consulta y obtén el resultado como un objeto de la entidad
+//	    T e = (T) query.getSingleResult();
+//
+//	    em.close();
+//
+//	    return e;
 //	}
+	
+	//Otra manera de encararlo
+	@Override
+	public T recuperar(Serializable id) {
+		return (T) EMF.getEMF().createEntityManager().find(getPersistentClass(), id);
+	}
 	
 	
 	@Override

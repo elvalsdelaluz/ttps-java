@@ -27,9 +27,9 @@
 //	
 //	public void inicializar() {
 //		//creo usuarios
-//		this.usu1 = new Usuario("elvalsdelaluz", "Muñoz Loza", "Mariangeles", "maria@gmail.com", "1234");
-//		this.usu2 = new Usuario("rafaga", "Diaz", "Antonio", "anto@gmail.com", "1234");	
-//		this.usu4 = new Usuario("gon", "Cellini", "Lara", "lara@gmail.com", "1234");	
+//		this.usu1 = new Usuario("Muñoz Loza", "Mariangeles", "maria@gmail.com", "1234");
+//		this.usu2 = new Usuario("Diaz", "Antonio", "anto@gmail.com", "1234");	
+//		this.usu4 = new Usuario("Cellini", "Lara", "lara@gmail.com", "1234");	
 //		//creo una categoria
 //		this.cate1 = new CategoriaGrupo("Viaje");
 //		//creo un grupo
